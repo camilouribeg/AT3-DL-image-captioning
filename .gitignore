@@ -1,8 +1,12 @@
 data/Flicker8k_Dataset/
 data/Flicker8k_Dataset/Images/
-/,venv
+.venv/
 data/experiment_camilo_model1.pth
 data/experiment_camilo_model1_full.pth
 notebooks/best_model.pt
 DL-imageCap
-.DS_Store
+DL-imageCap/
+
+# Ignore large model checkpoint files
+data/models/*.pth
+

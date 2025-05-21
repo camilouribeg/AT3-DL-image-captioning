@@ -11,25 +11,46 @@ def load_split_ids(txt_path):
 
 
 # Default transforms
-def get_transforms(mode="train"):
-    if mode == "train":
-        return transforms.Compose(
-            [
-                transforms.Resize((256, 256)),
-                transforms.RandomCrop(224),
+def get_transforms(mode="train", model_type = "default"):
+    
+    if model_type == "inception":        
+        if mode == "train":
+            return transforms.Compose([
+                transforms.Resize(int(299 * 1.14)),  
+                transforms.RandomResizedCrop(299),
                 transforms.RandomHorizontalFlip(),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
-            ]
-        )
-    else:
-        return transforms.Compose(
-            [
-                transforms.Resize((224, 224)),
+                transforms.Normalize( [0.485, 0.456, 0.406],
+                    [0.229, 0.224, 0.225]
+                ),
+            ])
+        else:
+            return transforms.Compose([                
+                transforms.Resize(int(299 * 1.14)),
+                transforms.CenterCrop(299),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
-            ]
-        )
+                transforms.Normalize([0.485, 0.456, 0.406],[0.229, 0.224, 0.225]),
+            ])
+    else:
+        
+        if mode == "train":
+            return transforms.Compose(
+                [
+                    transforms.Resize((256, 256)),
+                    transforms.RandomCrop(224),
+                    transforms.RandomHorizontalFlip(),
+                    transforms.ToTensor(),
+                    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ]
+            )
+        else:
+            return transforms.Compose(
+                [
+                    transforms.Resize((224, 224)),
+                    transforms.ToTensor(),
+                    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                ]
+            )
 
 
 def build_caption_dataset(
