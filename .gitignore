@@ -5,3 +5,4 @@ data/experiment_camilo_model1.pth
 data/experiment_camilo_model1_full.pth
 notebooks/best_model.pt
 DL-imageCap
+.DS_Store
