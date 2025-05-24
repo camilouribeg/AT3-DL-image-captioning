@@ -4,9 +4,9 @@ data/Flicker8k_Dataset/Images/
 data/experiment_camilo_model1.pth
 data/experiment_camilo_model1_full.pth
 notebooks/best_model.pt
-DL-imageCap
 DL-imageCap/
 
 # Ignore large model checkpoint files
 data/models/*.pth
 
+notebooks/Roy_Experiment_Transformer_Decoder_20Epoch copy.ipynb
